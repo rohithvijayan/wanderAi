@@ -66,6 +66,7 @@ a,a:hover,a:active,a:focus {
 	font-size:13px;
 	padding:0;
     margin:0;
+    font-weight: 900;
 
 }
 
@@ -277,8 +278,9 @@ html,body{
     white-space: nowrap;
     text-align: center;
     color: #fff;
-    font-size:14px;
+    font-size:16px;
     font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
     text-transform: capitalize;
     border-radius: 5px;
     -webkit-transition: 0.5s ease-in-out;
@@ -351,8 +353,9 @@ html,body{
     height: 60px;
     white-space: nowrap;
     color: #fff;
-    font-size:16px;
-    font-family: 'Poppins', sans-serif;
+    font-size:20px;
+    font-weight: 900;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
     border-radius: 5px;
     box-shadow: 0 5px 20px rgba(14,15,18,.2);
@@ -371,6 +374,7 @@ html,body{
 .travel-mrt-0{
     margin-top: 0px;
 }
+.plan-btn{font-weight: 900;}
 /*about-us-content*/
 
 /*-------------------------------------

@@ -1,22 +1,74 @@
+{% load static %}
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderAI - Travel Itinerary Planner</title>
+    <link rel="stylesheet" href="{% static 'css/Plannerstyles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>WanderAI</h1>
+            <p>Your AI-powered travel itinerary planner</p>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Plan Your Journey</h2>
+                <form id="itinerary-form">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" name="destination" placeholder="Enter your destination" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="persons">Number of Persons</label>
+                        <input type="number" id="persons" name="persons" min="1" placeholder="Enter number of persons" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arrival-date">Arrival Date</label>
+                        <input type="date" id="arrival-date" name="arrival_date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="departure-date">Departure Date</label>
+                        <input type="date" id="departure-date" name="departure_date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="journey-type">Type of Journey</label>
+                        <select id="journey-type" name="journey_type" required>
+                            <option value="leisure">Leisure</option>
+                            <option value="business">Business</option>
+                            <option value="romantic">Romantic</option>
+                            <option value="adventurous">Adventurous</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Budget</label>
+                        <select id="budget" name="budget" required>
+                            <option value="low">Low</option>
+                            <option value="mid">Mid</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id='generate-btn' class="generate-btn">Generate Itinerary</button>
+                </form>
+            </section>
+
+            <section class="itinerary-section" id="itinerary-section">
+                <h2>Your Itinerary</h2>
+                <div id="itinerary-content">
+                   <p id=itinerary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nisi, quisquam maxime explicabo similique ut recusandae sapiente eveniet obcaecati quos consequuntur dignissimos voluptate voluptatibus distinctio aut magnam ad quod. Ullam.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="{% static 'js/planner.js' %}"></script>
+</body>
 </html>
