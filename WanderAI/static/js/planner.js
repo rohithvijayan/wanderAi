@@ -1,10 +1,16 @@
 const form=document.getElementById("itinerary-form")
-const itinerary=document.getElementById("itinerary")
+const itinerary=document.getElementById("itinerary-content")
 const location_span=document.getElementById("location")
+const itinerary_section=document.getElementById("itinerary-section")
+const spinner=document.getElementById("spinner")
+const gen_btn=document.getElementById("generate-btn")
+gen_btn.addEventListener("click",()=>{
+    itinerary_section.style.display="block"
+    spinner.style.display="flex" 
+})
 form.addEventListener("submit",async (e)=>{
     e.preventDefault();
     //collect data from form
-    
     const data={'destination':form.destination.value,
         'pax':form.persons.value,
         'dept_date':form.departure_date.value,
@@ -12,7 +18,8 @@ form.addEventListener("submit",async (e)=>{
         'type_of_trip':form.journey_type.value,
         'budget':form.budget.value,
     };
-
+    itinerary_section.style.display="block"
+    spinner.style.display="flex"
     //console.log('data=',data)
     //sending data to server
     try{
@@ -35,6 +42,7 @@ form.addEventListener("submit",async (e)=>{
         //.then(data=>console.log('returned json is=',data))
         .then(data=>{
             console.log(data.destination)
+            spinner.style.display="none" 
             location_span.innerText=data.destination
             itinerary.innerHTML=data.itinerary
         })
