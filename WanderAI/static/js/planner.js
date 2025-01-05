@@ -1,5 +1,6 @@
 const form=document.getElementById("itinerary-form")
 const itinerary=document.getElementById("itinerary")
+const location_span=document.getElementById("location")
 form.addEventListener("submit",async (e)=>{
     e.preventDefault();
     //collect data from form
@@ -33,6 +34,8 @@ form.addEventListener("submit",async (e)=>{
         .then(response=>response.json())
         //.then(data=>console.log('returned json is=',data))
         .then(data=>{
+            console.log(data.destination)
+            location_span.innerText=data.destination
             itinerary.innerHTML=data.itinerary
         })
     },2000)//fetching response from server

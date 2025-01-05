@@ -37,10 +37,11 @@ def submit_data(request):
 
 @csrf_exempt
 def Get_itinerary(request):
+    global trip_data
     #print("returned json is- ",trip_details)
     itinerary=generate_itinerary(request)
     #print(trip_data)
-    return JsonResponse({'itinerary':itinerary})
+    return JsonResponse({'itinerary':itinerary,'destination':trip_data['destination']})
 
 def generate_itinerary(request):
     global trip_data
