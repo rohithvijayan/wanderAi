@@ -34,6 +34,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="arrival_transport">Arrival Transport</label>
+                        <select id="arrival_transport" name="arrival_transport" required>
+                            <option value="Train">Train</option>
+                            <option value="Airport">Airport</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Private Vehicle(Car,Bike,Bus)">Private Vehicle(Car,Bike,Bus)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="departure-date">Departure Date</label>
                         <input type="date" id="departure-date" name="departure_date" required>
                     </div>
@@ -74,6 +84,8 @@
 
                 
                 <h2 style="text-align: center;" id="itinerary-h2">Itinerary For <span id='location' style="text-transform: capitalize;"></span></h2>
+                <button type="button" id="collapse-btn" class="collapsible">Show Itinerary</button>
+
                 <div id="itinerary-content">
                    
                 </div>

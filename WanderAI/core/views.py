@@ -26,9 +26,10 @@ def submit_data(request):
             pax=data.get('pax')
             departure_date=data.get('dept_date')
             arrival_date=data.get("arrival_date")
+            arrival_transport=data.get("arrival_transport")
             type_of_trip=data.get('type_of_trip')
             budget=data.get('budget')
-            trip_data={"destination":destination,"pax":pax,"arrival_date":arrival_date,"departure_date":departure_date,"type_of_trip":type_of_trip,"budget":budget}
+            trip_data={"destination":destination,"pax":pax,"arrival_date":arrival_date,"departure_date":departure_date,"arrival_transport":arrival_transport,"type_of_trip":type_of_trip,"budget":budget}
             trip_details=f'The destination is {destination} for pax of {pax},Starting from {arrival_date} till {departure_date}.\nIt is a {type_of_trip} with a budget of {budget}.'
             #print(trip_details)
             #Get_itinerary()
@@ -77,11 +78,12 @@ def generate_itinerary(request):
         Evening:
         Visit the Lincoln Memorial and the Reflecting Pool (free).
         Walk around the National Mall.'''
-    prompt=f'''Create a detailed, {trip_data["budget"]}-budget {trip_data["type_of_trip"]} travel itinerary for {trip_data["pax"]} people visiting the {trip_data["destination"]} from {trip_data["arrival_date"]}, to {trip_data["departure_date"]}. The itinerary should include a mix of sightseeing, outdoor activities, cultural experiences, and local food exploration,with a focus on {trip_data["type_of_trip"]} Mood for the trip. Please break the itinerary down by day, starting with Day 1 (arrival){trip_data["arrival_date"]} and continuing through to last day(departure){trip_data["departure_date"]}. For each day, include a concise list of things to do, with a focus on  {trip_data["budget"]}-budget activities. The itinerary should also include travel details like transportation (bus, train, or affordable flights) between cities.The Desired response structre is {output_structure}.STRICLY AVOID USAGE OF ANY SYMBOLS.STRICLY DO NOT INCLUDE ```html in the response.THE LINES LIKE 'Day 1 February 25 Arrival in New York City' should be a <h3> element and the text following the corresponding day like 'Arrival: Arrive at JFK Airport.
+    prompt=f'''Create a detailed, {trip_data["budget"]}-budget {trip_data["type_of_trip"]} travel itinerary for {trip_data["pax"]} people visiting the {trip_data["destination"]} from {trip_data["arrival_date"]}, to {trip_data["departure_date"]}. I would be arriving at calicut by {trip_data['arrival_transport']} .The itinerary should include a mix of sightseeing, outdoor activities, cultural experiences, and local food exploration,with a focus on {trip_data["type_of_trip"]} Mood for the trip. Please break the itinerary down by day, starting with Day 1 (arrival){trip_data["arrival_date"]} arriving by {trip_data['arrival_transport']} and continuing through to last day(departure){trip_data["departure_date"]}. For each day, include a concise list of things to do, with a focus on  {trip_data["budget"]}-budget activities. The itinerary should also include travel details like transportation (bus, train, or affordable flights) between cities.The Desired response structre is {output_structure}.STRICLY AVOID USAGE OF ANY SYMBOLS.STRICLY DO NOT INCLUDE ```html in the response.THE LINES LIKE 'Day 1 February 25 Arrival in New York City' should be a <h3> element and the text following the corresponding day like 'Arrival: Arrive at JFK Airport.
         Transportation: Take a budget-friendly shuttle or subway to your accommodation (budget hotel or hostel in Queens or Brooklyn).
         Activities:
         Explore Times Square in the evening (free).
         Grab affordable street food (hot dogs, pretzels).
         Take a leisurely walk in the neighborhood.' should be within a <ul> such that each appears one below other .STRICLY AVOID THE 'Note: This itinerary assumes you have pre-booked your accommodation in Varkala. Transportation costs within Varkala can be managed by using auto-rickshaws or walking, which are affordable options. The budget can be adjusted by choosing accommodation and activities that suit your preferences. Always negotiate prices beforehand, especially for taxis and massages. February is a pleasant time to visit Varkala, but it is advisable to check the weather forecast closer to your travel dates. ' Part in response instead end with a 'We Hope To Give You A Memmorable Vacation !' as a <h4> and center it in the div'''
     response=model.generate_content(prompt)
+    print(response.text)
     return response.text

@@ -105,6 +105,21 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 
+#collapse-btn{
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #007acc, #00c6ff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s
+  
+
+}
+
 .itinerary-section h2 {
     margin-bottom: 20px;
     font-size: 2rem;
@@ -112,6 +127,8 @@ body {
 }
 
 #itinerary-content {
+    display: none;
+    overflow: hidden;
     font-size: 1rem;
     line-height: 1.6;
 }
